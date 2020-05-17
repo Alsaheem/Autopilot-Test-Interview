@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router";
 import CustomForm from "../components/Form";
+import { connect } from "react-redux";
 
 const ArticleDetail = (props) => {
   const { articleID } = useParams();
@@ -18,8 +19,13 @@ const ArticleDetail = (props) => {
   }, []);
 
   const handleDelete = () => {
+    let token = localStorage.getItem("token");
+    axios.defaults.headers = {
+      "Content-Type": "application/json",
+      Authorization: `token ${token}`,
+    };
     axios.delete(`http://127.0.0.1:8000/api/${articleID}/`);
-    history.replace("/");
+    history.push("/");
   };
 
   let article_date = new Date(data.created);
@@ -64,4 +70,10 @@ const ArticleDetail = (props) => {
   );
 };
 
-export default ArticleDetail;
+const mapStateToProps = (state) => {
+  return {
+    token: state.token,
+  };
+};
+
+export default connect(mapStateToProps)(ArticleDetail);
