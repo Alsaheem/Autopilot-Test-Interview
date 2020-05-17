@@ -8,7 +8,6 @@ const CustomForm = (props) => {
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState("");
-  let id;
 
   let history = useHistory();
 
@@ -16,7 +15,7 @@ const CustomForm = (props) => {
     event.preventDefault();
     axios.defaults.headers = {
       "Content-Type": "application/json",
-      Authorization: props.token,
+      Authorization: `token ${props.token}`,
     };
 
     let data = {
@@ -54,7 +53,10 @@ const CustomForm = (props) => {
   return (
     <div>
       {error && (
-        <div class="alert alert-danger" role="alert">
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
           You must be logged on to Create or Edit An article
         </div>
       )}

@@ -18,7 +18,7 @@ const RegistrationForm = (props) => {
 
   return (
     <form
-      className="form-signin justify-content-center offset-md-3 col-md-6 text-center"
+      className="form-signin justify-content-center offset-md-3 col-md-6 text-center mt-4"
       onSubmit={handleSubmit}
     >
       <img
@@ -71,7 +71,7 @@ const RegistrationForm = (props) => {
         Confirm Password
       </label>
       <input
-        type="confirm Password"
+        type="password"
         id="inputPassword"
         className="form-control mb-3"
         value={confirm}
@@ -83,12 +83,12 @@ const RegistrationForm = (props) => {
         Register
       </button>
       <Link to="/login">
-      <button
-        className="btn btn-lg btn-outline-primary btn-block mb-3"
-        type="submit"
-      >
+        <button
+          className="btn btn-lg btn-outline-primary btn-block mb-3"
+          type="submit"
+        >
           login
-      </button>
+        </button>
       </Link>
     </form>
   );

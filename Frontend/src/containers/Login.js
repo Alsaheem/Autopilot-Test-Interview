@@ -21,11 +21,13 @@ const LoginForm = (props) => {
     errorMessage = <p>{props.error.message}</p>;
   }
   return (
-    <div className="justify-content-center offset-md-3 col-md-6 text-center">
-      {props.error && <div class="alert alert-danger" role="alert">
-        {errorMessage}
-      </div>}
-      <form className="form-signin " onSubmit={handleSubmit}>
+    <div className="justify-content-center offset-md-3 mt-4 col-md-6 text-center">
+      {props.error && (
+        <div class="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
+      <form className="form-signin mt-4" onSubmit={handleSubmit}>
         <img
           className="mb-4"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQSr8uWo1xuhzhZR9YrFMFrkL3-zlcznly1wqcYwWDlv3a2WVX6&usqp=CAU"
@@ -62,12 +64,13 @@ const LoginForm = (props) => {
         <button className="btn btn-lg btn-primary btn-block mb-3" type="submit">
           login
         </button>
-        <Link to="/register"><button
-          className="btn btn-lg btn-outline-primary btn-block"
-          type="button"
-        >
+        <Link to="/register">
+          <button
+            className="btn btn-lg btn-outline-primary btn-block"
+            type="button"
+          >
             Register
-        </button>
+          </button>
         </Link>
       </form>
     </div>

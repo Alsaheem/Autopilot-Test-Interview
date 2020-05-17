@@ -21,7 +21,7 @@ const ArticleDetail = (props) => {
     history.replace("/");
   };
 
-  let article_date = new Date(data.created)
+  let article_date = new Date(data.created);
 
   return (
     <div className="container">
@@ -37,17 +37,28 @@ const ArticleDetail = (props) => {
         <i className="mt-2 fa fa-2x fa-heart  text-danger text-right"></i>
         {data.id} likes
       </div>
-      <div className="mb-4 text-capitalize"><h4>{data.content}</h4></div>
-      <hr/>
-      <hr/>
-      <hr/>
-      <h3>Edit or delete the Article here</h3>
-      <CustomForm requestType="put" articleID={articleID} btnText="Update" />
-      <form onSubmit={handleDelete}>
-        <button type="submit" className="btn btn-danger">
-          Delete
-        </button>
-      </form>
+      <div className="mb-4 text-capitalize">
+        <h4>{data.content}</h4>
+      </div>
+      <hr />
+      <hr />
+      <hr />
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <h3>Edit or delete the Article here</h3>
+
+          <CustomForm
+            requestType="put"
+            articleID={articleID}
+            btnText="Update"
+          />
+          <form onSubmit={handleDelete}>
+            <button type="submit" className="btn btn-danger">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
