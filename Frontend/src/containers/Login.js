@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actions from "../store/actions/auth";
+import Loading from "../components/Loading";
+import { useHistory } from "react-router-dom";
+
 // class NormalLoginForm extends React.Component {
 
 const LoginForm = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  let history = useHistory();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let x = props.onAuth(username, password);
-    if (x !== undefined) {
-      props.history.replace("/");
+    if (x != undefined) {
+      history.replace("/");
     }
   };
 
@@ -22,6 +29,7 @@ const LoginForm = (props) => {
   }
   return (
     <div className="justify-content-center offset-md-3 mt-4 col-md-6 text-center">
+
       {props.error && (
         <div class="alert alert-danger" role="alert">
           {errorMessage}

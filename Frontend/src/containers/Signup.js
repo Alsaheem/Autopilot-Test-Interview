@@ -3,20 +3,26 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actions from "../store/actions/auth";
+import Loading from "../components/Loading";
+
 
 const RegistrationForm = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [loading, setLoading] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     props.onAuth(username, email, password, confirm);
     props.history.push("/");
+
   };
 
-  return (
+  return (<>
     <form
       className="form-signin justify-content-center offset-md-3 col-md-6 text-center mt-4"
       onSubmit={handleSubmit}
@@ -91,6 +97,7 @@ const RegistrationForm = (props) => {
         </button>
       </Link>
     </form>
+    </>
   );
 };
 

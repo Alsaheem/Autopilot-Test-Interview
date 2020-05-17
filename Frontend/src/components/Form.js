@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Loading from "./Loading";
 
 const CustomForm = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   let history = useHistory();
 
@@ -41,7 +43,7 @@ const CustomForm = (props) => {
           .put(`http://127.0.0.1:8000/api/${articleID}/`, data)
           .then((response) => {
             console.log(response.data);
-            props.history.replace("/");
+            history.push("/");
           })
           .catch((err) => setError(err.message));
 

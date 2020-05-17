@@ -10,6 +10,7 @@ const ArticleDetail = (props) => {
 
   useEffect(() => {
     // effect
+
     axios.get(`http://127.0.0.1:8000/api/${articleID}/`).then((response) => {
       setData(response.data);
       console.log(response.data);
